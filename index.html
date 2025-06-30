@@ -3,102 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A&H Auto Detailer - Packages</title>
+  <title>Auto Detailer Theme</title>
   <style>
     body {
       margin: 0;
-      background: #161b1f; /* Dark background */
-      color: #fff; /* White text */
+      background: #161b1f;
+      color: #fff;
       font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
       min-height: 100vh;
       position: relative;
     }
-
-    /* Background image with blur and dimming */
     .header-bg {
-      background: url('https://rit980.github.io/Custom-Interior-Package-/bg.jpg') center center/cover no-repeat;
-      filter: blur(3px) brightness(0.5); /* Blur and darken */
-      position: fixed; /* Fixed so content scrolls over it */
+      background: url('bg.jpg') center center/cover no-repeat;
+      filter: blur(3px) brightness(0.5);
+      position: fixed;
       top: 0; left: 0; right: 0;
-      height: 220px; /* Height of the blurred header area */
-      z-index: 0; /* Behind other content */
+      height: 220px;
+      z-index: 0;
     }
-
     .container {
-      position: relative; /* Stacks above the blurred background */
+      position: relative;
       z-index: 2;
-      max-width: 430px; /* Max width for content, similar to phone screen */
-      margin: 0 auto; /* Center the container */
-      padding: 0 10px 32px 10px; /* Padding for content */
+      max-width: 430px;
+      margin: 0 auto;
+      padding: 0 10px 32px 10px;
     }
-
-    /* Logo card styling */
     .logo-card {
-      background: rgba(0,0,0,0.85); /* Semi-transparent black background */
+      background: rgba(0,0,0,0.85);
       border-radius: 12px;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 170px; /* Fixed width for the logo card */
-      margin: 28px auto 10px auto; /* Centered, with spacing */
-      padding: 14px 0 10px 0; /* Internal padding */
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15); /* Subtle shadow */
+      width: 170px;
+      margin: 28px auto 10px auto;
+      padding: 14px 0 10px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
     }
-
     .logo-img {
-      height: 38px; /* Fixed height for the logo */
+      height: 38px;
       width: auto;
       display: block;
     }
-
-    /* "Our Packages" title */
     .main-title {
       text-align: center;
-      font-size: 1.35rem; /* Size similar to screenshot */
+      font-size: 1.35rem;
       font-weight: 700;
       margin: 0 0 18px 0;
       letter-spacing: 0.5px;
       padding-top: 2px;
     }
-
-    /* Individual package card styling */
     .package-card {
-      background: rgba(35,39,43,0.97); /* Slightly lighter dark background */
+      background: rgba(35,39,43,0.97);
       border-radius: 14px;
       margin-bottom: 22px;
-      padding: 18px 16px 16px 16px; /* Internal padding */
-      box-shadow: 0 2px 12px rgba(0,0,0,0.16); /* Subtle shadow */
+      padding: 18px 16px 16px 16px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.16);
       position: relative;
     }
-
     .package-card h2 {
       font-size: 1.05rem;
       font-weight: 700;
       margin: 0 0 8px 0;
       color: #fff;
     }
-
-    /* Price styling */
     .package-price {
       font-size: 1.03rem;
       font-weight: 700;
-      color: #00e676; /* Green accent color */
+      color: #00e676;
       margin-bottom: 6px;
     }
-
-    .package-price span {
-      color: #00e676;
-      font-weight: 700;
-    }
-
     .package-card p {
-      color: #d1d5db; /* Lighter grey for description text */
+      color: #d1d5db;
       font-size: 0.98rem;
       margin: 0 0 14px 0;
       line-height: 1.5;
     }
-
-    /* Button styling */
     .btn {
       width: 100%;
       padding: 12px 0;
@@ -106,44 +85,38 @@
       font-weight: 600;
       border-radius: 8px;
       border: none;
-      margin-bottom: 9px; /* Space between buttons if stacked */
+      margin-bottom: 9px;
       cursor: pointer;
-      transition: background 0.18s; /* Smooth transition for hover */
-      display: block; /* Make buttons block level to stack */
+      transition: background 0.18s;
+      display: block;
     }
-
     .btn-green {
-      background: #00e676; /* Bright green for primary action */
-      color: #161b1f; /* Dark text on green */
+      background: #00e676;
+      color: #161b1f;
     }
-
     .btn-green:hover {
-      background: #1de9b6; /* Lighter green on hover */
+      background: #1de9b6;
     }
-
     .btn-dark {
-      background: #23272b; /* Dark grey for secondary action */
-      color: #bdbdbd; /* Lighter grey text on dark */
-      border: 1px solid #444; /* Subtle border */
+      background: #23272b;
+      color: #bdbdbd;
+      border: 1px solid #444;
     }
-
     .btn-dark:hover {
-      background: #33383d; /* Slightly lighter dark on hover */
+      background: #33383d;
       color: #fff;
     }
-
-    /* Responsive adjustments for smaller screens */
     @media (max-width: 600px) {
       .container {
-        padding: 0 2px 18px 2px; /* Reduce horizontal padding */
+        padding: 0 2px 18px 2px;
       }
       .logo-card {
-        width: 90vw; /* Make logo card more responsive */
+        width: 90vw;
         min-width: 140px;
         max-width: 220px;
       }
       .package-card {
-        padding: 14px 6px 12px 6px; /* Reduce internal padding for cards */
+        padding: 14px 6px 12px 6px;
       }
     }
   </style>
@@ -152,53 +125,19 @@
   <div class="header-bg"></div>
   <div class="container">
     <div class="logo-card">
-      <img src="https://rit980.github.io/A-H-Auto-Detailer/logo.png" alt="A&H Auto Detailer" class="logo-img">
+      <img src="logo.png" alt="Logo" class="logo-img">
     </div>
     <h1 class="main-title">Our Packages</h1>
 
-    <!-- A&H Total Revamp Package Card -->
+    <!-- Example card: remove or duplicate as needed -->
     <div class="package-card">
-      <h2>A&H Total Revamp Package</h2>
-      <div class="package-price">Starting at <span>₹4,999*</span></div>
-      <p>Complete transformation for your vehicle – perfect inside and out with premium care.</p>
+      <h2>Card Title</h2>
+      <div class="package-price">Starting at <span>₹X,XXX*</span></div>
+      <p>Description goes here.</p>
       <button class="btn btn-green">Get Quote</button>
       <button class="btn btn-dark">See Inclusions</button>
     </div>
-
-    <!-- Detailed Wash + 1 Step Polish + Wax Card -->
-    <div class="package-card">
-      <h2>Detailed Wash + 1 Step Polish + Wax</h2>
-      <div class="package-price">Starting at <span>₹1,499*</span></div>
-      <p>Thorough wash with a polish and protective wax for a long-lasting shine.</p>
-      <button class="btn btn-green">Get Quote</button>
-    </div>
-
-    <!-- Paint Correction Card -->
-    <div class="package-card">
-      <h2>Paint Correction</h2>
-      <div class="package-price">Starting at <span>₹3,499*</span></div>
-      <p>Restore your car’s paintwork to a flawless, glossy finish.</p>
-      <button class="btn btn-green">Get Quote</button>
-    </div>
-
-    <!-- You can add more package cards here following the same structure -->
-
+    <!-- Add more .package-card blocks as needed -->
   </div>
-  <!-- JavaScript will be inserted here -->
-    <script>
-    // Example: Show alert on "Get Quote" button click
-    document.querySelectorAll('.btn-green').forEach(btn => {
-      btn.addEventListener('click', function() {
-        alert('Thank you for your interest! Please contact us to get a quote.');
-      });
-    });
-
-    // Example: Show alert on "See Inclusions" button click
-    document.querySelectorAll('.btn-dark').forEach(btn => {
-      btn.addEventListener('click', function() {
-        alert('Inclusions: Deep cleaning, polishing, waxing, and more! Contact us for full details.');
-      });
-    });
-  </script>
 </body>
 </html>
