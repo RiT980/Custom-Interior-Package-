@@ -104,7 +104,6 @@
       margin-top: 2rem;
       border-radius: 16px;
     }
-    /* Popup for booking */
     .popup {
       display: none;
       position: fixed;
@@ -149,6 +148,19 @@
       color: white;
       font-size: 1rem;
     }
+    label.addon-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      cursor: pointer;
+    }
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+    .faq-question {
+      font-weight: bold;
+      color: var(--green);
+    }
   </style>
 </head>
 <body>
@@ -158,8 +170,8 @@
       <h1>A&H Auto Detailer</h1>
       <p class="highlight">Professional Interior Detailing at Your Doorstep</p>
       <p>Starting at <span class="highlight">₹1,199</span></p>
-      <button class="btn" id="book-now">Book Now</button>
     </div>
+
     <div class="card">
       <h2>Base Package</h2>
       <p>Deep cleaning of seats, mats & carpets</p>
@@ -167,65 +179,149 @@
       <p>Full vacuuming of the interior</p>
       <p><span class="highlight">Takes around 2 to 2.5 hours</span></p>
     </div>
+
     <h2>Optional Add-ons</h2>
     <div class="addon-card">
-      <h3>Headliner Cleaning</h3>
-      <p class="highlight">₹199</p>
+      <label class="addon-label">
+        <input type="checkbox" name="addon" value="199" class="addon-select">
+        <span>
+          <h3>Headliner Cleaning</h3>
+          <p class="highlight">₹199</p>
+        </span>
+      </label>
     </div>
     <div class="addon-card">
-      <h3>Stain & Odor Treatment</h3>
-      <p class="highlight">₹249</p>
+      <label class="addon-label">
+        <input type="checkbox" name="addon" value="249" class="addon-select">
+        <span>
+          <h3>Stain & Odor Treatment</h3>
+          <p class="highlight">₹249</p>
+        </span>
+      </label>
     </div>
     <div class="addon-card">
-      <h3>Exterior Foam Wash</h3>
-      <p class="highlight">₹499</p>
+      <label class="addon-label">
+        <input type="checkbox" name="addon" value="499" class="addon-select">
+        <span>
+          <h3>Exterior Foam Wash</h3>
+          <p class="highlight">₹499</p>
+        </span>
+      </label>
     </div>
     <div class="addon-card">
-      <h3>Water-Based Interior Dressing</h3>
-      <p class="highlight">₹199</p>
+      <label class="addon-label">
+        <input type="checkbox" name="addon" value="199" class="addon-select">
+        <span>
+          <h3>Water-Based Interior Dressing</h3>
+          <p class="highlight">₹199</p>
+        </span>
+      </label>
     </div>
     <div class="addon-card">
-      <h3>Silicone-Based Interior Dressing</h3>
-      <p class="highlight">₹99</p>
+      <label class="addon-label">
+        <input type="checkbox" name="addon" value="99" class="addon-select">
+        <span>
+          <h3>Silicone-Based Interior Dressing</h3>
+          <p class="highlight">₹99</p>
+        </span>
+      </label>
     </div>
     <div class="addon-card">
-      <h3>Leather Cleaning & Conditioning</h3>
-      <p class="highlight">₹399</p>
+      <label class="addon-label">
+        <input type="checkbox" name="addon" value="399" class="addon-select">
+        <span>
+          <h3>Leather Cleaning & Conditioning</h3>
+          <p class="highlight">₹399</p>
+        </span>
+      </label>
     </div>
     <div class="addon-card">
-      <h3>Foaming Upholstery Cleaning</h3>
-      <p class="highlight">₹299</p>
+      <label class="addon-label">
+        <input type="checkbox" name="addon" value="299" class="addon-select">
+        <span>
+          <h3>Foaming Upholstery Cleaning</h3>
+          <p class="highlight">₹299</p>
+        </span>
+      </label>
     </div>
     <div class="addon-card">
-      <h3>Foaming Interior Trims & Surface Cleaning</h3>
-      <p class="highlight">₹149</p>
+      <label class="addon-label">
+        <input type="checkbox" name="addon" value="149" class="addon-select">
+        <span>
+          <h3>Foaming Interior Trims & Surface Cleaning</h3>
+          <p class="highlight">₹149</p>
+        </span>
+      </label>
     </div>
     <div class="addon-card">
-      <h3>Seatbelt Cleaning</h3>
-      <p class="highlight">₹149</p>
+      <label class="addon-label">
+        <input type="checkbox" name="addon" value="149" class="addon-select">
+        <span>
+          <h3>Seatbelt Cleaning</h3>
+          <p class="highlight">₹149</p>
+        </span>
+      </label>
     </div>
     <div class="addon-card">
-      <h3>Pedal & Footwell Cleaning</h3>
-      <p class="highlight">₹99</p>
+      <label class="addon-label">
+        <input type="checkbox" name="addon" value="99" class="addon-select">
+        <span>
+          <h3>Pedal & Footwell Cleaning</h3>
+          <p class="highlight">₹99</p>
+        </span>
+      </label>
     </div>
     <div class="addon-card">
-      <h3>Glass Polishing (Interior)</h3>
-      <p class="highlight">₹149</p>
+      <label class="addon-label">
+        <input type="checkbox" name="addon" value="149" class="addon-select">
+        <span>
+          <h3>Glass Polishing (Interior)</h3>
+          <p class="highlight">₹149</p>
+        </span>
+      </label>
     </div>
+
     <div class="note">
       <p><span class="highlight">Note:</span> For luxury cars with leather interiors, we recommend Leather Cleaning & Conditioning. We use dedicated leather-care products for safe and effective results.</p>
     </div>
-    <div class="card">
-      <h2>Build Your Custom Package</h2>
-      <p>Select your add-ons above and book your service.</p>
-      <p><strong>Live Total: <span id="total-price">₹1,199</span></strong></p>
-      <button class="btn" id="whatsapp-book">Book via WhatsApp</button>
+
+    <div class="card" id="summary-card">
+      <h2>Your Custom Package</h2>
+      <div id="selected-summary">
+        <p>Base Package: <span class="highlight">₹1,199</span></p>
+        <p>Add-ons: <span id="addon-list">None selected</span></p>
+        <p><strong>Total: <span id="summary-total">₹1,199</span></strong></p>
+      </div>
+      <button class="btn" id="book-via-whatsapp">Book via WhatsApp</button>
     </div>
+
+    <div class="card">
+      <h2>About Us</h2>
+      <p>At A&H Auto Detailer, we bring professional car detailing to your doorstep. Our team uses premium products and expert techniques to ensure your car looks and feels brand new.</p>
+    </div>
+
+    <div class="card">
+      <h2>FAQ</h2>
+      <div class="faq-item">
+        <p class="faq-question">How long does the service take?</p>
+        <p>Most services take between 2 to 2.5 hours, depending on your selected add-ons.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-question">What areas do you serve?</p>
+        <p>We currently serve all major areas in the city. Please contact us for specific locations.</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-question">Can I cancel or reschedule my booking?</p>
+        <p>Yes, you can reschedule or cancel your booking up to 24 hours before your appointment.</p>
+      </div>
+    </div>
+
     <footer>
       <p>Contact us for more details</p>
       <p>© 2024 A&H Auto Detailer</p>
     </footer>
   </div>
+
   <div class="popup" id="booking-popup">
     <div class="popup-content">
       <button class="close-btn">&times;</button>
@@ -238,31 +334,61 @@
       </form>
     </div>
   </div>
+
   <script>
-    const bookNowBtn = document.getElementById('book-now');
-    const whatsappBtn = document.getElementById('whatsapp-book');
+    const addons = document.querySelectorAll('.addon-select');
+    const addonList = document.getElementById('addon-list');
+    const summaryTotal = document.getElementById('summary-total');
+    const bookBtn = document.getElementById('book-via-whatsapp');
     const popup = document.getElementById('booking-popup');
     const closeBtn = document.querySelector('.close-btn');
+    const basePrice = 1199;
 
-    bookNowBtn.addEventListener('click', function() {
+    function updateSummary() {
+      let total = basePrice;
+      let selected = [];
+      addons.forEach(addon => {
+        if (addon.checked) {
+          const name = addon.parentElement.querySelector('h3').textContent;
+          const price = parseInt(addon.value);
+          selected.push(`${name} (₹${price})`);
+          total += price;
+        }
+      });
+      addonList.innerHTML = selected.length ? selected.join('<br>') : 'None selected';
+      summaryTotal.textContent = `₹${total.toLocaleString('en-IN')}`;
+    }
+
+    addons.forEach(addon => addon.addEventListener('change', updateSummary));
+
+    bookBtn.addEventListener('click', function() {
       popup.style.display = 'flex';
     });
-    whatsappBtn.addEventListener('click', function() {
-      popup.style.display = 'flex';
-    });
+
     closeBtn.addEventListener('click', function() {
       popup.style.display = 'none';
     });
+
     document.getElementById('customer-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const name = this.elements.name.value;
       const phone = this.elements.phone.value;
       const car = this.elements.car.value;
+      let selected = [];
+      addons.forEach(addon => {
+        if (addon.checked) {
+          const name = addon.parentElement.querySelector('h3').textContent;
+          const price = addon.value;
+          selected.push(`${name} (₹${price})`);
+        }
+      });
       const message = encodeURIComponent(
-        'Hi, I want to book a custom interior detailing package.\n' +
+        'Hi, I want to book a custom interior detailing package:\n' +
         'Name: ' + name + '\n' +
         'Phone: ' + phone + '\n' +
         'Car Model: ' + car + '\n' +
+        'Add-ons:\n' + (selected.length ? selected.join('\n') : 'None selected') + '\n' +
+        'Total: ' + summaryTotal.textContent + '\n' +
         'Please confirm my booking.'
       );
       window.open('https://wa.me/919818198485?text=' + message, '_blank');
