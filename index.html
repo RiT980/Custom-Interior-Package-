@@ -9,8 +9,8 @@
       --dark: #121212;
       --green: #2ecc71;
       --light: #f8f9fa;
-      --glass: rgba(255,255,255,0.12);
-      --selected: rgba(46, 204, 113, 0.2);
+      --glass: rgba(0,0,0,0.4);
+      --selected: rgba(0,0,0,0.6);
     }
     body, html {
       margin: 0;
@@ -33,84 +33,103 @@
       z-index: -1;
     }
     .container {
-      max-width: 100%;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 0.8rem;
+      padding: 1.5rem 2rem;
       position: relative;
       z-index: 1;
     }
     .card {
-      background: var(--glass);
+      background: rgba(0,0,0,0.3);
       backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 1rem;
-      margin-bottom: 0.8rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(0,0,0,0.2);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
     }
     .highlight {
       color: var(--green);
       font-weight: bold;
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
     .btn {
       background: var(--green);
       color: var(--dark);
       border: none;
-      padding: 0.8rem 1.5rem;
+      padding: 1rem 2rem;
       font-weight: bold;
       border-radius: 50px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.1rem;
       transition: all 0.2s ease;
       text-decoration: none;
       display: inline-block;
-      margin-top: 0.8rem;
-      box-shadow: 0 3px 12px rgba(46, 204, 113, 0.3);
+      margin-top: 1rem;
+      box-shadow: 0 4px 16px rgba(46, 204, 113, 0.3);
+    }
+    .btn:hover {
+      background: #27ae60;
+      transform: translateY(-2px);
     }
     .addon-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-      gap: 0.6rem;
-      margin: 0.8rem 0;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    @media (max-width: 768px) {
+      .addon-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.8rem;
+      }
+      .container {
+        padding: 1rem;
+      }
+      .card {
+        padding: 1rem;
+        margin-bottom: 1rem;
+      }
     }
     .addon-tile {
-      background: var(--glass);
+      background: rgba(0,0,0,0.4);
       backdrop-filter: blur(10px);
-      border-radius: 8px;
-      padding: 0.5rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 12px;
+      padding: 1rem;
       cursor: pointer;
       transition: all 0.2s ease;
       position: relative;
-      min-height: 50px;
+      min-height: 80px;
     }
     .addon-tile.selected {
-      background: var(--selected);
+      background: rgba(0,0,0,0.6);
       border-color: var(--green);
     }
     .addon-tile.selected::after {
       content: "✓";
       position: absolute;
-      top: 0.2rem;
-      right: 0.2rem;
-      font-size: 0.8rem;
+      top: 0.5rem;
+      right: 0.5rem;
+      font-size: 1rem;
       color: var(--green);
       font-weight: bold;
     }
     .addon-tile h3 {
-      font-size: 0.8rem;
+      font-size: 1rem;
       margin: 0;
     }
     .addon-tile p {
       color: var(--light);
-      font-size: 0.7rem;
-      margin: 0.2rem 0 0;
+      font-size: 0.9rem;
+      margin: 0.5rem 0 0;
     }
     .summary-item {
-      margin: 0.3rem 0;
-      font-size: 0.9rem;
+      margin: 0.5rem 0;
+      font-size: 1rem;
     }
     .popup {
       display: none;
@@ -125,41 +144,42 @@
       align-items: center;
     }
     .popup-content {
-      background: var(--dark);
-      padding: 1.5rem;
-      border-radius: 12px;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 16px;
       width: 90%;
-      max-width: 350px;
+      max-width: 500px;
       position: relative;
     }
     .close-btn {
       position: absolute;
-      top: 0.8rem;
-      right: 0.8rem;
+      top: 1rem;
+      right: 1rem;
       background: none;
       border: none;
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       color: var(--light);
       cursor: pointer;
     }
     .popup label {
       display: block;
-      margin-bottom: 0.8rem;
-      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
     }
     .popup input {
       width: 100%;
-      padding: 0.6rem;
-      margin-top: 0.2rem;
-      background: rgba(255,255,255,0.1);
-      border: none;
-      border-radius: 6px;
+      padding: 0.8rem;
+      margin-top: 0.3rem;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 8px;
       color: white;
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
-    h1 { font-size: 1.8rem; margin: 0 0 0.5rem; }
-    h2 { font-size: 1.4rem; margin: 0.8rem 0 0.5rem; }
-    p { font-size: 0.9rem; margin: 0.4rem 0; }
+    h1 { font-size: 2.2rem; margin: 0 0 0.8rem; }
+    h2 { font-size: 1.8rem; margin: 1.2rem 0 0.8rem; }
+    p { font-size: 1rem; margin: 0.6rem 0; }
   </style>
 </head>
 <body>
@@ -227,7 +247,7 @@
           <p class="highlight">₹149</p>
         </div>
       </div>
-      <p style="font-size:0.8rem;margin-top:0.6rem;"><span class="highlight">Note:</span> For luxury cars with leather interiors, we recommend Leather Cleaning & Conditioning. We use dedicated leather-care products for safe and effective results.</p>
+      <p style="font-size:0.95rem;margin-top:1rem;"><span class="highlight">Note:</span> For luxury cars with leather interiors, we recommend Leather Cleaning & Conditioning. We use dedicated leather-care products for safe and effective results.</p>
     </div>
 
     <div class="card" id="summary-card">
