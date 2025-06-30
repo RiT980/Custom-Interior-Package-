@@ -9,8 +9,6 @@
       --dark: #121212;
       --green: #2ecc71;
       --light: #f8f9fa;
-      --glass: rgba(0,0,0,0.4);
-      --selected: rgba(0,0,0,0.6);
     }
     body, html {
       margin: 0;
@@ -21,7 +19,7 @@
       height: 100%;
     }
     .bg-image {
-      background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1608506375591-b90e1f955e4b?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2FyJTIwd2FzaHxlbnwwfHwwfHx8MA%3D%3D');
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1608506375591-b90e1f955e4b?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2FrJTIwd2FzaHxlbnwwfHwwfHx8MA%3D%3D');
       background-position: center;
       background-size: cover;
       background-attachment: fixed;
@@ -40,12 +38,12 @@
       z-index: 1;
     }
     .card {
-      background: rgba(0,0,0,0.3);
+      background: rgba(0,0,0,0.2);
       backdrop-filter: blur(10px);
       border-radius: 16px;
       padding: 1.5rem;
       margin-bottom: 1.5rem;
-      border: 1px solid rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 6px 24px rgba(0,0,0,0.2);
       max-width: 800px;
       margin-left: auto;
@@ -95,9 +93,9 @@
       }
     }
     .addon-tile {
-      background: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.1);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
       padding: 1rem;
       cursor: pointer;
@@ -106,7 +104,7 @@
       min-height: 80px;
     }
     .addon-tile.selected {
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.3);
       border-color: var(--green);
     }
     .addon-tile.selected::after {
@@ -144,7 +142,7 @@
       align-items: center;
     }
     .popup-content {
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.3);
       backdrop-filter: blur(10px);
       padding: 2rem;
       border-radius: 16px;
@@ -171,8 +169,8 @@
       width: 100%;
       padding: 0.8rem;
       margin-top: 0.3rem;
-      background: rgba(0,0,0,0.4);
-      border: 1px solid rgba(0,0,0,0.2);
+      background: rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.1);
       border-radius: 8px;
       color: white;
       font-size: 1rem;
@@ -259,7 +257,7 @@
         <p>Add-ons: <span id="addon-list">None selected</span></p>
       </div>
       <div class="summary-item">
-        <p><strong>Total: <span id="summary-total">₹1,199</span></strong></p>
+        <p><strong>Total: <span id="summy-total">₹1,199</span></strong></p>
       </div>
       <button class="btn" id="book-via-whatsapp">Book via WhatsApp</button>
     </div>
@@ -281,7 +279,7 @@
   <script>
     const addonTiles = document.querySelectorAll('.addon-tile');
     const addonList = document.getElementById('addon-list');
-    const summaryTotal = document.getElementById('summary-total');
+    const summaryTotal = document.getElementById('summy-total');
     const bookBtn = document.getElementById('book-via-whatsapp');
     const popup = document.getElementById('booking-popup');
     const closeBtn = document.querySelector('.close-btn');
