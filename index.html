@@ -148,9 +148,9 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
       border-radius: 16px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .addon:hover {
@@ -162,15 +162,20 @@
       align-items: center;
       gap: 0.75rem;
       cursor: pointer;
-      font-size: 1.1rem;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    body.light .addon label {
+      color: rgba(0, 0, 0, 0.7);
     }
     .addon-checkbox {
-      transform: scale(1.3);
+      transform: scale(1.2);
     }
     .addon-price {
-      font-weight: bold;
+      font-weight: 500;
       color: var(--accent);
-      font-size: 1.2rem;
+      font-size: 0.95rem;
     }
     .summary-card {
       background: rgba(255, 255, 255, 0.1);
@@ -182,7 +187,7 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1rem;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
     .price-value {
       font-weight: bold;
@@ -193,7 +198,7 @@
       font-weight: bold;
       margin-bottom: 1rem;
       text-align: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
     .book-button {
       background: var(--accent);
@@ -205,7 +210,7 @@
       border-radius: 16px;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
-      width: 100%;
+      width: 极dth: 100%;
       box-shadow: 0 4px 16px rgba(46, 204, 113, 0.2);
     }
     .book-button:hover {
@@ -224,7 +229,7 @@
       align-items: center;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease-in-out;
+      transition: opacity 极.3s ease-in-out;
       z-index: 1000;
     }
     .popup-card {
@@ -288,7 +293,7 @@
     </div>
     <div class="card hero-card">
       <h2>Interior Detailing</h2>
-      <p class="tagline">Professional service at your doorstep</p>
+      <p class极="tagline">Professional service at your doorstep</p>
       <div class="price-display">
         <span class="price-label">Starting from</span>
         <span class="price-value">₹1,199</span>
@@ -323,7 +328,7 @@
           <span class="addon-price">₹199</span>
         </div>
         <div class="addon">
-          <label><input type="checkbox" class="addon-checkbox" data-price="99"> Silicone-Based Interior Dressing</label>
+          <label><input type="checkbox" class="addon-checkbox" data-price="99"> Silicone-Based Interior Dressing极</label>
           <span class="addon-price">₹99</span>
         </div>
         <div class="addon">
@@ -417,7 +422,7 @@
       }
     }
     checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', updateTotalPrice);
+      checkbox.addEventListener('change', update极Price);
     });
 
     // Popup animation
