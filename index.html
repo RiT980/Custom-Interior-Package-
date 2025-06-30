@@ -6,297 +6,243 @@
   <title>A&H Auto Detailer</title>
   <style>
     :root {
-      --dark: #121212;
-      --green: #2ecc71;
-      --light: #f8f9fa;
+      --primary: #2e7d32; /* Deep green accent */
+      --secondary: #f5f5f5; /* Light background */
+      --dark: #333;
+      --white: #fff;
     }
-    body, html {
+    body {
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background: var(--dark);
-      color: var(--light);
-      height: 100%;
-      font-family: Arial, sans-serif; /* Use your preferred font here */
+      background: var(--secondary);
+      color: var(--dark);
     }
-    .bg-image {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1551737823-dfc8495904b4');
-      background-position: center top;
-      background-size: cover;
-      background-attachment: fixed;
-      position: fixed;
+    header {
+      background: url('https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: var(--white);
+      text-align: center;
+      position: relative;
+    }
+    header::before {
+      content: '';
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
+      background: rgba(0,0,0,0.6);
     }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1.5rem 2rem;
+    header h1, header p {
       position: relative;
       z-index: 1;
     }
-    .card {
-      background: rgba(0,0,0,0.2);
-      backdrop-filter: blur(10px);
-      border-radius: 16px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 6px 24px rgba(0,0,0,0.2);
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
     }
-    .highlight {
-      color: var(--green);
-      font-weight: bold;
-      font-size: 1rem;
+    header p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
     }
     .btn {
-      background: var(--green);
-      color: var(--dark);
+      background: var(--primary);
+      color: var(--white);
+      padding: 12px 24px;
       border: none;
-      padding: 1rem 2rem;
-      font-weight: bold;
-      border-radius: 50px;
+      border-radius: 4px;
+      font-size: 1rem;
       cursor: pointer;
-      font-size: 1.1rem;
-      transition: all 0.2s ease;
       text-decoration: none;
-      display: inline-block;
-      margin-top: 1rem;
-      box-shadow: 0 4px 16px rgba(46, 204, 113, 0.3);
+      transition: background 0.3s;
     }
     .btn:hover {
-      background: #27ae60;
-      transform: translateY(-2px);
+      background: #1b5e20;
     }
-    .addon-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 1rem;
-      margin: 1.5rem 0;
+    main {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
     }
-    @media (max-width: 768px) {
-      .addon-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        gap: 0.8rem;
-      }
-      .container {
-        padding: 1rem;
-      }
-      .card {
-        padding: 1rem;
-        margin-bottom: 1rem;
-      }
+    section {
+      margin: 3rem 0;
     }
-    .addon-tile {
-      background: rgba(0,0,0,0.1);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 12px;
-      padding: 1rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      position: relative;
-      min-height: 80px;
-    }
-    .addon-tile.selected {
-      background: rgba(0,0,0,0.3);
-      border-color: var(--green);
-    }
-    .addon-tile.selected::after {
-      content: "✓";
-      position: absolute;
-      top: 0.5rem;
-      right: 0.5rem;
-      font-size: 1rem;
-      color: var(--green);
-      font-weight: bold;
-    }
-    .addon-tile h3 {
-      font-size: 1rem;
-      margin: 0;
-    }
-    .addon-tile p {
-      color: var(--light);
-      font-size: 0.9rem;
-      margin: 0.5rem 0 0;
-    }
-    .summary-item {
-      margin: 0.5rem 0;
-      font-size: 1rem;
-    }
-    .popup {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      z-index: 1000;
-      justify-content: center;
-      align-items: center;
-    }
-    .popup-content {
-      background: rgba(0,0,0,0.3);
-      backdrop-filter: blur(10px);
-      padding: 2rem;
-      border-radius: 16px;
-      width: 90%;
-      max-width: 500px;
-      position: relative;
-    }
-    .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      color: var(--light);
-      cursor: pointer;
-    }
-    .popup label {
-      display: block;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-    .popup input {
-      width: 100%;
-      padding: 0.8rem;
-      margin-top: 0.3rem;
-      background: rgba(0,0,0,0.2);
-      border: 1px solid rgba(255,255,255,0.1);
+    .card {
+      background: var(--white);
       border-radius: 8px;
-      color: white;
-      font-size: 1rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
     }
-    h1 { font-size: 2.2rem; margin: 0 0 0.8rem; }
-    h2 { font-size: 1.8rem; margin: 1.2rem 0 0.8rem; }
-    p { font-size: 1rem; margin: 0.6rem 0; }
+    .card h2 {
+      font-size: 1.8rem;
+      margin-top: 0;
+      color: var(--primary);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .addon {
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 1.5rem;
+    }
+    .addon h3 {
+      margin-top: 0;
+    }
+    .price {
+      font-weight: bold;
+      color: var(--primary);
+      margin-top: 0.5rem;
+    }
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+    }
+    form {
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      padding: 2rem;
+      margin-top: 2rem;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
-  <div class="bg-image"></div>
-  <div class="container">
-    <div class="card">
-      <h1>A&H Auto Detailer</h1>
-      <p class="highlight">Professional Interior Detailing at Your Doorstep</p>
-      <p>Starting at <span class="highlight">₹1,199</span></p>
-    </div>
-
-    <div class="card">
-      <h2>Base Package</h2>
-      <p>Deep cleaning of seats, mats & carpets</p>
-      <p>Dashboard, door panels & AC vents cleaning</p>
-      <p>Full vacuuming of the interior</p>
-      <p><span class="highlight">Takes around 2 to 2.5 hours</span></p>
-    </div>
-
-    <div class="card">
-      <h2>Optional Add-ons</h2>
-      <div class="addon-grid">
-        <div class="addon-tile" data-name="Headliner Cleaning" data-price="199">
-          <h3>Headliner</h極>
-          <p class="highlight">₹199</p>
+  <header>
+    <h1>A&H Auto Detailer</h1>
+    <p>Professional Interior Detailing at Your Doorstep</p>
+    <a href="#booking" class="btn">Book Now</a>
+  </header>
+  <main>
+    <section>
+      <div class="card">
+        <h2>Base Package</h2>
+        <p><strong>Starting at ₹1,199</strong></p>
+        <ul>
+          <li>Deep cleaning of seats, mats & carpets</li>
+          <li>Dashboard, door panels & AC vents</li>
+          <li>Full vacuuming</li>
+          <li>2–2.5 hours</li>
+        </ul>
+        <p>We focus on deep, result-driven cleaning using professional tools and premium-grade products — no shortcuts, no surface-level wiping.</p>
+      </div>
+    </section>
+    <section>
+      <h2>Add-ons</h2>
+      <div class="grid">
+        <div class="addon">
+          <h3>Headliner Cleaning</h3>
+          <div class="price">₹199</div>
         </div>
-        <!-- ... (other addon-tile items) ... -->
+        <div class="addon">
+          <h3>Stain & Odor Treatment</h3>
+          <div class="price">₹249</div>
+        </div>
+        <div class="addon">
+          <h3>Exterior Foam Wash</h3>
+          <div class="price">₹499</div>
+        </div>
+        <div class="addon">
+          <h3>Water-Based Interior Dressing</h3>
+          <div class="price">₹199</div>
+        </div>
+        <div class="addon">
+          <h3>Silicone-Based Interior Dressing</h3>
+          <div class="price">₹99</div>
+        </div>
+        <div class="addon">
+          <h3>Leather Cleaning & Conditioning</h3>
+          <div class="price">₹399</div>
+        </div>
+        <div class="addon">
+          <h3>Foaming Upholstery Cleaning</h3>
+          <div class="price">₹299</div>
+        </div>
+        <div class="addon">
+          <h3>Foaming Interior Trims & Surface Cleaning</h3>
+          <div class="price">₹149</div>
+        </div>
+        <div class="addon">
+          <h3>Seatbelt Cleaning</h3>
+          <div class="price">₹149</div>
+        </div>
+        <div class="addon">
+          <h3>Pedal & Footwell Cleaning</h3>
+          <div class="price">₹99</div>
+        </div>
+        <div class="addon">
+          <h3>Glass Polishing (Interior)</h3>
+          <div class="price">₹149</div>
+        </div>
       </div>
-      <p style="font-size:0.95rem;margin-top:1rem;"><span class="highlight">Note:</span> For luxury cars with leather interiors, we recommend Leather Cleaning & Conditioning. We use dedicated leather-care products for safe and effective results.</p>
-    </div>
-
-    <div class="card" id="summary-card">
-      <h2>Your Custom Package</h2>
-      <div class="summary-item">
-        <p>Base: <span class="highlight">₹1,199</span></p>
-      </div>
-      <div class="summary-item">
-        <p>Add-ons: <span id="addon-list">None selected</span></p>
-      </div>
-      <div class="summary-item">
-        <p><strong>Total: <span id="summary-total">₹1,199</span></strong></p>
-      </div>
-      <button class="btn" id="book-via-whatsapp">Book via WhatsApp</button>
-    </div>
-  </div>
-
-  <div class="popup" id="booking-popup">
-    <div class="popup-content">
-      <button class="close-btn">&times;</button>
-      <h3>Enter Your Details</h3>
-      <form id="customer-form">
-        <label>Name: <input type="text" name="name" required></label>
-        <label>Phone: <input type="text" name="phone" required></label>
-        <label>Car Model: <input type="text极 name="car" required></label>
-        <button type="submit" class="btn">Send via WhatsApp</button>
+    </section>
+    <section id="booking">
+      <h2>Book Your Service</h2>
+      <form>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="package">Package</label>
+          <select id="package">
+            <option value="base">Base Package (₹1,199)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="addons">Add-ons (optional)</label>
+          <select id="addons" multiple>
+            <option value="headliner">Headliner Cleaning (₹199)</option>
+            <option value="stain">Stain & Odor Treatment (₹249)</option>
+            <option value="exterior">Exterior Foam Wash (₹499)</option>
+            <option value="water">Water-Based Interior Dressing (₹199)</option>
+            <option value="silicone">Silicone-Based Interior Dressing (₹99)</option>
+            <option value="leather">Leather Cleaning & Conditioning (₹399)</option>
+            <option value="upholstery">Foaming Upholstery Cleaning (₹299)</option>
+            <option value="trims">Foaming Interior Trims & Surface Cleaning (₹149)</option>
+            <option value="seatbelt">Seatbelt Cleaning (₹149)</option>
+            <option value="pedal">Pedal & Footwell Cleaning (₹99)</option>
+            <option value="glass">Glass Polishing (Interior) (₹149)</option>
+          </select>
+        </div>
+        <button type="submit" class="btn">Submit Booking</button>
       </form>
-    </div>
-  </div>
-
-  <script>
-    const addonTiles = document.querySelectorAll('.addon-tile');
-    const addonList = document.getElementById('addon-list');
-    const summaryTotal = document.getElementById('summary-total');
-    const bookBtn = document.getElementById('book-via-whatsapp');
-    const popup = document.getElementById('booking-popup');
-    const closeBtn = document.querySelector('.close-btn');
-    const basePrice = 1199;
-
-    let selectedAddons = [];
-
-    addonTiles.forEach(tile => {
-      tile.addEventListener('click', function() {
-        this.classList.toggle('selected');
-        const name = this.dataset.name;
-        const price = parseInt(this.dataset.price);
-        if (this.classList.contains('selected')) {
-          selectedAddons.push({ name, price });
-        } else {
-          selectedAddons = selectedAddons.filter(addon => addon.name !== name);
-        }
-        updateSummary();
-      });
-    });
-
-    function updateSummary() {
-      let total = basePrice;
-      let addonText = selectedAddons.length
-        ? selectedAddons.map(addon => `${addon.name} (₹${addon.price})`).join(', ')
-        : 'None selected';
-      selectedAddons.forEach(addon => { total += addon.price; });
-      addonList.textContent = addonText;
-      summaryTotal.textContent = `₹${total.toLocaleString('en-IN')}`;
-    }
-
-    bookBtn.addEventListener('click', function() {
-      popup.style.display = 'flex';
-    });
-
-    closeBtn.addEventListener('click', function() {
-      popup.style.display = 'none';
-    });
-
-    document.getElementById('customer-form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = this.elements.name.value;
-      const phone = this.elements.phone.value;
-      const car = this.elements.car.value;
-      const message = encodeURIComponent(
-        'Hi, I want to book a custom interior detailing package:\n' +
-        'Name: ' + name + '\n' +
-        'Phone: ' + phone + '\n' +
-        'Car Model: ' + car + '\n' +
-        'Add-ons: ' + (selectedAddons.length ? selectedAddons.map(addon => `${addon.name} (₹${addon.price})`).join(', ') : 'None selected') + '\n' +
-        'Total: ' + summaryTotal.textContent + '\n' +
-        'Please confirm my booking.'
-      );
-      window.open('https://wa.me/919818198485?text=' + message, '_blank');
-      popup.style.display = 'none';
-    });
-  </script>
+    </section>
+    <section>
+      <div class="card">
+        <h2>Note</h2>
+        <p>For luxury cars with leather interiors, we recommend Leather Cleaning & Conditioning. We use dedicated leather-care products for safe and effective results.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2024 A&H Auto Detailer. All rights reserved.</p>
+  </footer>
 </body>
 </html>
