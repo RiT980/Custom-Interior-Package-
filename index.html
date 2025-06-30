@@ -7,55 +7,55 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --accent: #2ecc71;
-      --bg: #121212;
-      --card: rgba(255, 255, 255, 0.1);
-      --text: #f8f8f8;
-      --border: rgba(255, 255, 255, 0.1);
-      --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-      --light-bg: #f8f8f8;
-      --light-card: rgba(255, 255, 255, 0.9);
-      --light-text: #121212;
-      --light-border: rgba(0, 0, 0, 0.1);
+      --accent: #FF6B6B;
+      --bg: #F8F9FA;
+      --text: #212529;
+      --light-accent: #FFD3B6;
+      --border: #E9ECEF;
     }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: var(--bg);
       color: var(--text);
       margin: 0;
       padding: 0;
       min-height: 100vh;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       transition: background 0.3s, color 0.3s;
-      line-height: 1.5;
     }
-    body.light {
-      background: var(--light-bg);
-      color: var(--light-text);
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
     .app-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0;
+      max-width: 600px;
+      width: 100%;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     .app-header {
-      padding: 2rem 1rem 1rem 1rem;
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--bg);
+      margin-bottom: 2rem;
       position: sticky;
       top: 0;
+      background: var(--bg);
       z-index: 100;
+      padding: 1rem 0;
     }
     .app-title {
       font-size: 2rem;
       font-weight: bold;
       color: var(--accent);
-      letter-spacing: -0.5px;
       margin: 0;
+      letter-spacing: -1px;
     }
     .theme-toggle {
-      background: rgba(46, 204, 113, 0.2);
+      background: var(--light-accent);
       border-radius: 50%;
       width: 48px;
       height: 48px;
@@ -63,27 +63,31 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      border: 1px solid rgba(46, 204, 113, 0.3);
+      border: none;
       transition: background 0.3s;
     }
     .theme-toggle:hover {
-      background: rgba(46, 204, 113, 0.3);
+      background: var(--accent);
+      color: #fff;
     }
     .hero {
       background: var(--accent);
       color: #fff;
-      padding: 4rem 1rem;
-      text-align: center;
+      padding: 3rem 2rem;
+      border-radius: 0;
+      width: 100%;
       margin-bottom: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     }
     .hero h2 {
       font-size: 2.5rem;
       font-weight: bold;
       margin: 0 0 0.5rem;
+      letter-spacing: -1px;
     }
     .tagline {
       font-size: 1.2rem;
-      opacity: 0.9;
+      opacity: 0.95;
       margin-bottom: 1rem;
     }
     .price-display {
@@ -95,22 +99,27 @@
     }
     .price-label {
       font-size: 1.2rem;
-      opacity: 0.9;
+      opacity: 0.95;
     }
     .price-value {
       font-size: 2.2rem;
       font-weight: bold;
     }
     .section {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 2rem 1rem;
+      width: 100%;
+      margin-bottom: 2rem;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+      text-align: left;
     }
     .section-title {
       font-size: 1.5rem;
       font-weight: bold;
       color: var(--accent);
       margin: 0 0 1rem;
+      letter-spacing: -0.5px;
     }
     .package-list {
       padding-left: 1.5rem;
@@ -127,16 +136,18 @@
       margin-top: 1rem;
     }
     .addon {
-      background: var(--card);
-      backdrop-filter: blur(16px);
-      border-radius: 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
       padding: 1rem;
-      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .addon:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     }
     .addon label {
       display: flex;
@@ -145,11 +156,7 @@
       cursor: pointer;
       font-size: 0.9rem;
       font-weight: 400;
-      color: var(--text);
       margin-bottom: 0.5rem;
-    }
-    body.light .addon label {
-      color: var(--light-text);
     }
     .addon-checkbox {
       transform: scale(1.2);
@@ -160,13 +167,12 @@
       font-size: 1rem;
     }
     .summary {
-      background: var(--card);
-      backdrop-filter: blur(16px);
-      border-radius: 16px;
+      background: #fff;
+      border-radius: 8px;
       padding: 2rem;
-      margin: 2rem auto;
-      max-width: 800px;
-      box-shadow: var(--shadow);
+      width: 100%;
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
     }
     .total-price {
       display: flex;
@@ -189,15 +195,15 @@
       padding: 1.25rem;
       font-size: 1.2rem;
       font-weight: bold;
-      border-radius: 12px;
+      border-radius: 8px;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
       width: 100%;
-      box-shadow: 0 4px 16px rgba(46, 204, 113, 0.2);
+      box-shadow: 0 4px 16px rgba(255, 107, 107, 0.2);
     }
     .book-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
+      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
     }
     .popup {
       position: fixed;
@@ -215,20 +221,15 @@
       z-index: 1000;
     }
     .popup-content {
-      background: var(--card);
-      backdrop-filter: blur(16px);
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+      background: #fff;
+      border-radius: 8px;
+      border: none;
       padding: 2rem;
       width: 90%;
       max-width: 400px;
       transform: translateY(20px);
       transition: transform 0.3s ease-in-out;
-    }
-    body.light .popup-content {
-      background: var(--light-card);
-      border-color: var(--light-border);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     }
     .popup.active {
       opacity: 1;
@@ -242,19 +243,15 @@
       padding: 1rem;
       margin: 0.5rem 0 1rem;
       border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.1);
+      background: #fff;
       color: var(--text);
-      border-radius: 12px;
+      border-radius: 8px;
       font-size: 1.1rem;
       transition: background 0.3s;
     }
-    body.light input {
-      background: rgba(0, 0, 0, 0.05);
-      color: var(--light-text);
-    }
     @media (max-width: 600px) {
       .app-container {
-        padding: 0;
+        padding: 1rem;
       }
       .section, .summary {
         padding: 1.5rem;
@@ -262,6 +259,28 @@
       .addons-grid {
         grid-template-columns: 1fr;
       }
+    }
+    body.dark {
+      --bg: #212529;
+      --text: #f8f9fa;
+      --light-accent: #343a40;
+      --border: #495057;
+    }
+    body.dark .section,
+    body.dark .summary,
+    body.dark .addon,
+    body.dark input,
+    body.dark .popup-content {
+      background: #343a40;
+      color: #f8f9fa;
+      border-color: #495057;
+    }
+    body.dark .addon:hover {
+      background: #495057;
+    }
+    body.dark .book-button {
+      background: #ff6b6b;
+      color: #fff;
     }
   </style>
 </head>
@@ -372,9 +391,9 @@
     // Theme toggle
     const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('light');
+      document.body.classList.toggle('dark');
       const icon = themeToggle.querySelector('i');
-      if (document.body.classList.contains('light')) {
+      if (document.body.classList.contains('dark')) {
         icon.className = 'fas fa-sun';
       } else {
         icon.className = 'fas fa-moon';
