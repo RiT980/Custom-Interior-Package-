@@ -4,211 +4,98 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>A&H Auto Detailer</title>
-  <style>
-    :root {
-      --accent: #2ecc71;
-      --bg: #121212;
-      --card: rgba(255, 255, 255, 0.1);
-      --text: #f8f8f8;
-      --border: rgba(255, 255, 255, 0.1);
-      --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(145deg, var(--bg), #1a1a1a);
-      color: var(--text);
-      margin: 0;
-      padding: 2rem 1rem;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-    }
-    .container {
-      width: 100%;
-      max-width: 800px;
-      background: var(--card);
-      backdrop-filter: blur(20px);
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      padding: 2rem;
-      margin: 1rem auto;
-    }
-    h1, h2, h3 {
-      font-weight: bold;
-      color: var(--accent);
-      margin-top: 0;
-    }
-    .price {
-      font-size: 1.8rem;
-      color: var(--accent);
-      margin: 1rem 0;
-    }
-    ul {
-      padding-left: 1.5rem;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-    }
-    th, td {
-      padding: 12px;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-    }
-    th {
-      color: var(--accent);
-    }
-    .book-now {
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      padding: 16px 24px;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 14px;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      margin: 1rem 0;
-      width: 100%;
-      box-shadow: 0 4px 16px rgba(46, 204, 113, 0.2);
-    }
-    .book-now:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
-    }
-    .popup {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease-in-out;
-      z-index: 1000;
-    }
-    .popup-content {
-      background: var(--card);
-      backdrop-filter: blur(20px);
-      border-radius: 18px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      padding: 2rem;
-      width: 90%;
-      max-width: 400px;
-      transform: translateY(20px);
-      transition: transform 0.3s ease-in-out;
-    }
-    .popup.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-    .popup.active .popup-content {
-      transform: translateY(0);
-    }
-    input, select {
-      width: 100%;
-      padding: 14px;
-      margin: 0.5rem 0 1rem;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.1);
-      color: var(--text);
-      border-radius: 12px;
-      font-size: 1rem;
-    }
-    .addon-checkbox {
-      margin-right: 8px;
-    }
-    .note {
-      font-size: 0.9rem;
-      color: #aaa;
-      margin-top: 1rem;
-    }
-    @media (max-width: 600px) {
-      .container {
-        padding: 1.5rem;
-      }
-      .popup-content {
-        width: 95%;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+  <div id="hero">
+    <div class="hero-content">
+      <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+      </div>
+      <h1>🚗 A&H Auto Detailer</h1>
+      <p class="hero-subtitle">Professional Interior Detailing at Your Doorstep</p>
+      <p class="hero-price">Start at <span id="basePrice">₹1,199</span></p>
+      <p class="hero-tagline">Deep, result-driven cleaning. No shortcuts.</p>
+    </div>
+  </div>
+
   <div class="container">
-    <h1>A&H Auto Detailer</h1>
-    <p><strong>Professional Interior Detailing at Your Doorstep</strong></p>
-    <p class="price">Start at <span id="basePrice">₹1,199</span></p>
-    <p><em>Deep, result-driven cleaning. No shortcuts.</em></p>
+    <div class="progress-steps">
+      <div class="step active" data-step="1">1</div>
+      <div class="step" data-step="2">2</div>
+      <div class="step" data-step="3">3</div>
+    </div>
+    <h2 class="step-title" id="stepTitle">Select Your Add-Ons</h2>
 
-    <h3>Base Package</h3>
-    <ul>
-      <li>Deep cleaning of seats, mats & carpets</li>
-      <li>Dashboard, door panels & AC vents</li>
-      <li>Full vacuuming</li>
-      <li><strong>Duration:</strong> 2–2.5 hours</li>
-    </ul>
+    <div class="package-section">
+      <h3>Base Package</h3>
+      <ul>
+        <li>Deep cleaning of seats, mats & carpets</li>
+        <li>Dashboard, door panels & AC vents</li>
+        <li>Full vacuuming</li>
+        <li><strong>Duration:</strong> 2–2.5 hours</li>
+      </ul>
+    </div>
 
-    <h3>Add-Ons</h3>
-    <table>
-      <tr>
-        <th>Service</th>
-        <th>Price (₹)</th>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="addon-checkbox" id="addon1" data-price="199"> <label for="addon1">Headliner Cleaning</label></td>
-        <td>199</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="addon-checkbox" id="addon2" data-price="249"> <label for="addon2">Stain & Odor Treatment</label></td>
-        <td>249</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="addon-checkbox" id="addon3" data-price="499"> <label for="addon3">Exterior Foam Wash</label></td>
-        <td>499</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="addon-checkbox" id="addon4" data-price="199"> <label for="addon4">Water-Based Interior Dressing</label></td>
-        <td>199</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="addon-checkbox" id="addon5" data-price="99"> <label for="addon5">Silicone-Based Interior Dressing</label></td>
-        <td>99</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="addon-checkbox" id="addon6" data-price="399"> <label for="addon6">Leather Cleaning & Conditioning</label></td>
-        <td>399</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="addon-checkbox" id="addon7" data-price="299"> <label for="addon7">Foaming Upholstery Cleaning</label></td>
-        <td>299</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="addon-checkbox" id="addon8" data-price="149"> <label for="addon8">Foaming Interior Trims & Surface Cleaning</label></td>
-        <td>149</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="addon-checkbox" id="addon9" data-price="149"> <label for="addon9">Seatbelt Cleaning</label></td>
-        <td>149</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="addon-checkbox" id="addon10" data-price="99"> <label for="addon10">Pedal & Footwell Cleaning</label></td>
-        <td>99</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" class="addon-checkbox" id="addon11" data-price="149"> <label for="addon11">Glass Polishing (Interior)</label></td>
-        <td>149</td>
-      </tr>
-    </table>
+    <div class="addons-section">
+      <h3>Add-Ons</h3>
+      <table>
+        <tr>
+          <th>Service</th>
+          <th>Price (₹)</th>
+        </tr>
+        <tr>
+          <td><label class="addon-label"><input type="checkbox" class="addon-checkbox" id="addon1" data-price="199"> <span>Headliner Cleaning</span></label></td>
+          <td>199</td>
+        </tr>
+        <tr>
+          <td><label class="addon-label"><input type="checkbox" class="addon-checkbox" id="addon2" data-price="249"> <span>Stain & Odor Treatment</span></label></td>
+          <td>249</td>
+        </tr>
+        <tr>
+          <td><label class="addon-label"><input type="checkbox" class="addon-checkbox" id="addon3" data-price="499"> <span>Exterior Foam Wash</span></label></td>
+          <td>499</td>
+        </tr>
+        <tr>
+          <td><label class="addon-label"><input type="checkbox" class="addon-checkbox" id="addon4" data-price="199"> <span>Water-Based Interior Dressing</span></label></td>
+          <td>199</td>
+        </tr>
+        <tr>
+          <td><label class="addon-label"><input type="checkbox" class="addon-checkbox" id="addon5" data-price="99"> <span>Silicone-Based Interior Dressing</span></label></td>
+          <td>99</td>
+        </tr>
+        <tr>
+          <td><label class="addon-label"><input type="checkbox" class="addon-checkbox" id="addon6" data-price="399"> <span>Leather Cleaning & Conditioning</span></label></td>
+          <td>399</td>
+        </tr>
+        <tr>
+          <td><label class="addon-label"><input type="checkbox" class="addon-checkbox" id="addon7" data-price="299"> <span>Foaming Upholstery Cleaning</span></label></td>
+          <td>299</td>
+        </tr>
+        <tr>
+          <td><label class="addon-label"><input type="checkbox" class="addon-checkbox" id="addon8" data-price="149"> <span>Foaming Interior Trims & Surface Cleaning</span></label></td>
+          <td>149</td>
+        </tr>
+        <tr>
+          <td><label class="addon-label"><input type="checkbox" class="addon-checkbox" id="addon9" data-price="149"> <span>Seatbelt Cleaning</span></label></td>
+          <td>149</td>
+        </tr>
+        <tr>
+          <td><label class="addon-label"><input type="checkbox" class="addon-checkbox" id="addon10" data-price="99"> <span>Pedal & Footwell Cleaning</span></label></td>
+          <td>99</td>
+        </tr>
+        <tr>
+          <td><label class="addon-label"><input type="checkbox" class="addon-checkbox" id="addon11" data-price="149"> <span>Glass Polishing (Interior)</span></label></td>
+          <td>149</td>
+        </tr>
+      </table>
+    </div>
 
-    <div class="price">Total Price: <span id="totalPrice">₹1,199</span></div>
+    <div class="price-section">
+      <div class="price">Total Price: <span id="totalPrice">₹1,199</span></div>
+      <div class="recommendation" id="recommendation"></div>
+    </div>
+
     <button class="book-now" id="bookNow">Book Now</button>
 
     <p class="note">For luxury cars with leather interiors, we recommend Leather Cleaning & Conditioning. We use dedicated leather-care products for safe and effective results.</p>
@@ -223,69 +110,377 @@
         <input type="time" placeholder="Preferred Time" required>
         <input type="text" placeholder="Location" required>
         <input type="text" placeholder="Car Model" required>
-        <button type="submit" class="book-now">Book Now</button>
+        <button type="submit" class="book-now" id="submitBooking">Book Now</button>
       </form>
+      <div class="loader" id="loader"></div>
     </div>
   </div>
-    <script>
-    // Live price update
-    const basePrice = 1199;
-    const checkboxes = document.querySelectorAll('.addon-checkbox');
-    const totalPriceElement = document.getElementById('totalPrice');
 
-    function updateTotalPrice() {
-      let total = basePrice;
-      checkboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-          total += parseInt(checkbox.dataset.price);
-        }
-      });
-      totalPriceElement.textContent = `₹${total}`;
+  <div id="successModal" class="popup">
+    <div class="popup-content">
+      <h3>Booking Sent!</h3>
+      <p>Your booking request has been sent to our team.</p>
+      <button class="book-now" id="closeSuccessModal">Close</button>
+    </div>
+  </div>
+  <style>
+  :root {
+    --accent: #2ecc71;
+    --bg: #121212;
+    --card: rgba(255, 255, 255, 0.1);
+    --text: #f8f8f8;
+    --border: rgba(255, 255, 255, 0.1);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --light-bg: #f8f8f8;
+    --light-card: rgba(255, 255, 255, 0.9);
+    --light-text: #121212;
+    --light-border: rgba(0, 0, 0, 0.1);
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(145deg, var(--bg), #1a1a1a);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    transition: background 0.3s, color 0.3s;
+  }
+  body.light {
+    background: linear-gradient(145deg, var(--light-bg), #e0e0e0);
+    color: var(--light-text);
+  }
+  #hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1542282088-fe8426722b8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  h1, h2, h3 {
+    font-weight: bold;
+    color: var(--accent);
+    margin-top: 0;
+  }
+  .hero-subtitle, .hero-tagline {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+  .hero-price {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin: 1rem 0;
+  }
+  .container {
+    width: 90%;
+    max-width: 800px;
+    background: var(--card);
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    margin: -4rem auto 2rem;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  body.light .container {
+    background: var(--light-card);
+    border-color: var(--light-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  .progress-steps {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .step {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+  }
+  .step.active {
+    background: var(--accent);
+    color: #fff;
+    transform: scale(1.1);
+  }
+  .step-title {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  ul {
+    padding-left: 1.5rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+  }
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  th {
+    color: var(--accent);
+  }
+  .addon-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .addon-checkbox {
+    margin-right: 8px;
+    transform: scale(1.2);
+  }
+  .addon-label:hover {
+    transform: translateX(4px);
+  }
+  .addon-checkbox:checked + span {
+    color: var(--accent);
+    font-weight: bold;
+  }
+  .price {
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin: 1rem 0;
+    text-align: center;
+  }
+  .recommendation {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--accent);
+    font-weight: bold;
+  }
+  .book-now {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 16px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin: 1rem auto;
+    display: block;
+    box-shadow: 0 4px 16px rgba(46, 204, 113, 0.2);
+  }
+  .book-now:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
+  }
+  .note {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  .popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  .popup-content {
+    background: var(--card);
+    backdrop-filter: blur(20px);
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    transform: translateY(20px);
+    transition: transform 0.3s ease-in-out;
+  }
+  body.light .popup-content {
+    background: var(--light-card);
+    border-color: var(--light-border);
+  }
+  .popup.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .popup.active .popup-content {
+    transform: translateY(0);
+  }
+  input, select {
+    width: 100%;
+    padding: 14px;
+    margin: 0.5rem 0 1rem;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: background 0.3s;
+  }
+  body.light input, body.light select {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--light-text);
+  }
+  .loader {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top: 4px solid var(--accent);
+    border-radius: 50%;
+    margin: 1rem auto;
+    display: none;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  @media (max-width: 600px) {
+    .container {
+      width: 95%;
+      padding: 1.5rem;
     }
+    .popup-content {
+      width: 95%;
+    }
+    #hero {
+      height: 50vh;
+    }
+  }
+    </style>
+    <script>
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+    const icon = themeToggle.querySelector('i');
+    if (document.body.classList.contains('light')) {
+      icon.className = 'fas fa-sun';
+    } else {
+      icon.className = 'fas fa-moon';
+    }
+  });
 
+  // Live price update and recommendations
+  const basePrice = 1199;
+  const checkboxes = document.querySelectorAll('.addon-checkbox');
+  const totalPriceElement = document.getElementById('totalPrice');
+  const recommendationElement = document.getElementById('recommendation');
+
+  function updateTotalPrice() {
+    let total = basePrice;
+    let hasLeather = false;
     checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', updateTotalPrice);
-    });
-
-    // Popup animation
-    const bookNowBtn = document.getElementById('bookNow');
-    const popup = document.getElementById('popup');
-    const bookingForm = document.getElementById('bookingForm');
-
-    bookNowBtn.addEventListener('click', () => {
-      popup.classList.add('active');
-    });
-
-    // Close popup when clicking outside
-    popup.addEventListener('click', (e) => {
-      if (e.target === popup) {
-        popup.classList.remove('active');
+      if (checkbox.checked) {
+        total += parseInt(checkbox.dataset.price);
+        if (checkbox.id === 'addon6') hasLeather = true;
       }
     });
+    totalPriceElement.textContent = `₹${total}`;
+    if (hasLeather) {
+      recommendationElement.textContent = '✅ Leather care included!';
+    } else {
+      recommendationElement.textContent = '';
+    }
+  }
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', updateTotalPrice);
+  });
 
-    // Send booking to WhatsApp
-    bookingForm.addEventListener('submit', function(e) {
-      e.preventDefault();
+  // Popup animation
+  const bookNowBtn = document.getElementById('bookNow');
+  const popup = document.getElementById('popup');
+  const bookingForm = document.getElementById('bookingForm');
+  const submitBooking = document.getElementById('submitBooking');
+  const loader = document.getElementById('loader');
+  const successModal = document.getElementById('successModal');
+  const closeSuccessModal = document.getElementById('closeSuccessModal');
+
+  bookNowBtn.addEventListener('click', () => {
+    popup.classList.add('active');
+  });
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) {
+      popup.classList.remove('active');
+    }
+  });
+
+  // Send booking to WhatsApp with loading spinner
+  bookingForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    submitBooking.style.display = 'none';
+    loader.style.display = 'block';
+
+    setTimeout(() => {
       const name = this.elements[0].value;
       const date = this.elements[1].value;
       const time = this.elements[2].value;
       const location = this.elements[3].value;
       const carModel = this.elements[4].value;
 
-      // Get selected add-ons
       const selectedAddons = [];
       checkboxes.forEach(checkbox => {
         if (checkbox.checked) {
-          const label = document.querySelector(`label[for="${checkbox.id}"]`).textContent;
+          const label = document.querySelector(`label[for="${checkbox.id}"] span`).textContent;
           selectedAddons.push(label);
         }
       });
-
       const addonsText = selectedAddons.length ? selectedAddons.join(', ') : 'None';
 
       const message = `Booking Request:\nName: ${name}\nDate: ${date}\nTime: ${time}\nLocation: ${location}\nCar Model: ${carModel}\nAdd-ons: ${addonsText}`;
       window.open(`https://wa.me/919818198485?text=${encodeURIComponent(message)}`, '_blank');
-    });
-  </script>
+
+      popup.classList.remove('active');
+      successModal.classList.add('active');
+      submitBooking.style.display = 'block';
+      loader.style.display = 'none';
+    }, 1000);
+  });
+
+  // Close success modal
+  closeSuccessModal.addEventListener('click', () => {
+    successModal.classList.remove('active');
+  });
+</script>
 </body>
 </html>
