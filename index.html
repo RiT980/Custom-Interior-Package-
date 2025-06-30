@@ -7,12 +7,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --accent: #FF6B6B;
+      --accent: #2A5CAA;
       --bg: #F8F9FA;
       --text: #212529;
-      --light-accent: #FFD3B6;
+      --light-accent: #D6E4FF;
       --border: #E9ECEF;
     }
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
     body {
       font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: var(--bg);
@@ -26,7 +27,6 @@
       align-items: center;
       transition: background 0.3s, color 0.3s;
     }
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
     .app-container {
       max-width: 600px;
       width: 100%;
@@ -199,11 +199,11 @@
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
       width: 100%;
-      box-shadow: 0 4px 16px rgba(255, 107, 107, 0.2);
+      box-shadow: 0 4px 16px rgba(42, 92, 170, 0.2);
     }
     .book-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+      box-shadow: 0 6px 20px rgba(42, 92, 170, 0.3);
     }
     .popup {
       position: fixed;
@@ -263,7 +263,7 @@
     body.dark {
       --bg: #212529;
       --text: #f8f9fa;
-      --light-accent: #343a40;
+      --light-accent: #2A3E6B;
       --border: #495057;
     }
     body.dark .section,
@@ -279,7 +279,7 @@
       background: #495057;
     }
     body.dark .book-button {
-      background: #ff6b6b;
+      background: #2A5CAA;
       color: #fff;
     }
   </style>
