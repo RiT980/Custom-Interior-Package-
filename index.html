@@ -26,13 +26,14 @@
       padding: 0;
       min-height: 100vh;
       transition: background 0.3s, color 0.3s;
+      line-height: 1.5;
     }
     body.light {
       background: var(--light-bg);
       color: var(--light-text);
     }
     .app-container {
-      max-width: 600px;
+      max-width: 800px;
       margin: 0 auto;
       padding: 2rem 1rem;
     }
@@ -43,10 +44,11 @@
       margin-bottom: 2rem;
     }
     .app-title {
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: bold;
       color: var(--accent);
-      letter-spacing: -0.5px;
+      letter-spacing: -1px;
+      margin: 0;
     }
     .theme-toggle {
       background: rgba(46, 204, 113, 0.2);
@@ -63,28 +65,29 @@
     .theme-toggle:hover {
       background: rgba(46, 204, 113, 0.3);
     }
-    .card {
+    .block {
       background: var(--card);
       backdrop-filter: blur(16px);
-      border-radius: 24px;
+      border-radius: 16px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
       padding: 2rem;
       margin-bottom: 1.5rem;
       transition: transform 0.2s, box-shadow 0.2s;
     }
-    body.light .card {
+    body.light .block {
       background: var(--light-card);
       border-color: var(--light-border);
     }
-    .hero-card {
+    .hero-block {
       background: var(--accent);
       color: #fff;
       text-align: center;
-      padding: 2.5rem 2rem;
+      padding: 3rem 2rem;
+      margin-bottom: 2rem;
     }
-    .hero-card h2 {
-      font-size: 2rem;
+    .hero-block h2 {
+      font-size: 2.5rem;
       font-weight: bold;
       margin: 0 0 0.5rem;
     }
@@ -101,18 +104,14 @@
       margin-bottom: 0.5rem;
     }
     .price-label {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       opacity: 0.9;
     }
     .price-value {
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: bold;
     }
-    .package-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(16px);
-    }
-    .package-card h3 {
+    .package-block h3 {
       font-size: 1.5rem;
       font-weight: bold;
       color: var(--accent);
@@ -125,14 +124,8 @@
     .package-list li {
       font-size: 1.1rem;
       margin-bottom: 0.75rem;
-      line-height: 1.4;
     }
-    .addons-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(16px);
-      padding: 1.5rem;
-    }
-    .addons-card h3 {
+    .addons-block h3 {
       font-size: 1.5rem;
       font-weight: bold;
       color: var(--accent);
@@ -140,31 +133,31 @@
     }
     .addons-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.75rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
     }
     .addon {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
+      flex-direction: column;
       background: rgba(255, 255, 255, 0.05);
-      border-radius: 16px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s, box-shadow 0.2s;
     }
     .addon:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
     }
     .addon label {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.5rem;
       cursor: pointer;
       font-size: 0.9rem;
       font-weight: 400;
       color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 0.5rem;
     }
     body.light .addon label {
       color: rgba(0, 0, 0, 0.7);
@@ -175,19 +168,20 @@
     .addon-price {
       font-weight: 500;
       color: var(--accent);
-      font-size: 0.95rem;
+      font-size: 1rem;
+      margin-top: 0.25rem;
     }
-    .summary-card {
+    .summary-block {
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(16px);
-      padding: 1.5rem;
+      padding: 2rem;
     }
     .total-price {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 1rem;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
     .price-value {
       font-weight: bold;
@@ -207,10 +201,10 @@
       padding: 1.25rem;
       font-size: 1.2rem;
       font-weight: bold;
-      border-radius: 16px;
+      border-radius: 12px;
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.2s;
-      width: 极dth: 100%;
+      width: 100%;
       box-shadow: 0 4px 16px rgba(46, 204, 113, 0.2);
     }
     .book-button:hover {
@@ -229,13 +223,13 @@
       align-items: center;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 极.3s ease-in-out;
+      transition: opacity 0.3s ease-in-out;
       z-index: 1000;
     }
-    .popup-card {
+    .popup-block {
       background: var(--card);
       backdrop-filter: blur(16px);
-      border-radius: 24px;
+      border-radius: 16px;
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
       padding: 2rem;
@@ -244,7 +238,7 @@
       transform: translateY(20px);
       transition: transform 0.3s ease-in-out;
     }
-    body.light .popup-card {
+    body.light .popup-block {
       background: var(--light-card);
       border-color: var(--light-border);
     }
@@ -252,7 +246,7 @@
       opacity: 1;
       pointer-events: all;
     }
-    .popup.active .popup-card {
+    .popup.active .popup-block {
       transform: translateY(0);
     }
     input {
@@ -270,15 +264,15 @@
       background: rgba(0, 0, 0, 0.05);
       color: var(--light-text);
     }
-    @media (max-width: 400px) {
+    @media (max-width: 600px) {
       .app-container {
         padding: 1rem;
       }
-      .card {
+      .block, .hero-block, .summary-block {
         padding: 1.5rem;
       }
-      .hero-card {
-        padding: 1.5rem;
+      .addons-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -291,15 +285,15 @@
         <i class="fas fa-moon"></i>
       </div>
     </div>
-    <div class="card hero-card">
+    <div class="hero-block block">
       <h2>Interior Detailing</h2>
-      <p class极="tagline">Professional service at your doorstep</p>
+      <p class="tagline">Professional service at your doorstep</p>
       <div class="price-display">
         <span class="price-label">Starting from</span>
         <span class="price-value">₹1,199</span>
       </div>
     </div>
-    <div class="card package-card">
+    <div class="package-block block">
       <h3>Base Package</h3>
       <ul class="package-list">
         <li>Deep cleaning of seats, mats & carpets</li>
@@ -308,7 +302,7 @@
         <li><strong>Duration:</strong> 2–2.5 hours</li>
       </ul>
     </div>
-    <div class="card addons-card">
+    <div class="addons-block block">
       <h3>Add-Ons</h3>
       <div class="addons-grid">
         <div class="addon">
@@ -328,7 +322,7 @@
           <span class="addon-price">₹199</span>
         </div>
         <div class="addon">
-          <label><input type="checkbox" class="addon-checkbox" data-price="99"> Silicone-Based Interior Dressing极</label>
+          <label><input type="checkbox" class="addon-checkbox" data-price="99"> Silicone-Based Interior Dressing</label>
           <span class="addon-price">₹99</span>
         </div>
         <div class="addon">
@@ -357,7 +351,7 @@
         </div>
       </div>
     </div>
-    <div class="card summary-card">
+    <div class="summary-block block">
       <div class="total-price">
         <span>Total Price:</span>
         <span class="price-value" id="totalPrice">₹1,199</span>
@@ -367,7 +361,7 @@
     </div>
   </div>
   <div class="popup" id="popup">
-    <div class="popup-card">
+    <div class="popup-block">
       <h3>Book Your Detailing</h3>
       <form id="bookingForm">
         <input type="text" placeholder="Name" required>
@@ -380,7 +374,7 @@
     </div>
   </div>
   <div class="popup" id="successModal">
-    <div class="popup-card">
+    <div class="popup-block">
       <h3>Booking Sent!</h3>
       <p>Your booking request has been sent to our team.</p>
       <button class="book-button" id="closeSuccessModal">Close</button>
@@ -416,13 +410,13 @@
       });
       totalPriceElement.textContent = `₹${total}`;
       if (hasLeather) {
-        recommendationElement.textContent = '✅ Leather care included!';
+        recommendationElement.textContent = 'Leather care included!';
       } else {
         recommendationElement.textContent = '';
       }
     }
     checkboxes.forEach(checkbox => {
-      checkbox.addEventListener('change', update极Price);
+      checkbox.addEventListener('change', updateTotalPrice);
     });
 
     // Popup animation
