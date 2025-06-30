@@ -30,7 +30,9 @@
       padding: 2rem 1rem;
     }
     header {
-      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1200&q=80');
+      background: 
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url('https://images.unsplash.com/photo-1608506375591-b90e1f955e4b?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y2FyJTIwd2FzaHxlbnwwfHwwfHx8MA%3D%3D');
       background-size: cover;
       background-position: center;
       min-height: 80vh;
@@ -114,6 +116,57 @@
       text-align: center;
       margin-top: 2rem;
     }
+    #package-builder label {
+      display: block;
+      padding: 0.5rem 0;
+      cursor: pointer;
+    }
+    #package-builder input[type="checkbox"] {
+      margin-right: 0.5rem;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-content {
+      background: var(--dark);
+      padding: 2rem;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 500px;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--light);
+      cursor: pointer;
+    }
+    .popup label {
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .popup input {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 4px;
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -157,6 +210,26 @@
     <div class="note">
       <p><span class="highlight">Note:</span> For luxury cars with leather interiors, we recommend Leather Cleaning & Conditioning. We use dedicated leather-care products for safe and effective results.</p>
     </div>
+    <h2>Build Your Custom Package</h2>
+    <div class="card" id="custom-package">
+      <h3>Build Your Custom Package</h3>
+      <form id="package-builder">
+        <p>Select your add-ons:</p>
+        <label><input type="checkbox" name="addon" value="199"> Headliner Cleaning – ₹199</label><br>
+        <label><input type="checkbox" name="addon" value="249"> Stain & Odor Treatment – ₹249</label><br>
+        <label><input type="checkbox" name="addon" value="499"> Exterior Foam Wash – ₹499</label><br>
+        <label><input type="checkbox" name="addon" value="199"> Water-Based Interior Dressing – ₹199</label><br>
+        <label><input type="checkbox" name="addon" value="99"> Silicone-Based Interior Dressing – ₹99</label><br>
+        <label><input type="checkbox" name="addon" value="399"> Leather Cleaning & Conditioning – ₹399</label><br>
+        <label><input type="checkbox" name="addon" value="299"> Foaming Upholstery Cleaning – ₹299</label><br>
+        <label><input type="checkbox" name="addon" value="149"> Foaming Interior Trims & Surface Cleaning – ₹149</label><br>
+        <label><input type="checkbox" name="addon" value="149"> Seatbelt Cleaning – ₹149</label><br>
+        <label><input type="checkbox" name="addon" value="99"> Pedal & Footwell Cleaning – ₹99</label><br>
+        <label><input type="checkbox" name="addon" value="149"> Glass Polishing (Interior) – ₹149</label><br>
+        <p><strong>Live Total: <span id="total-price">₹1,199</span></strong></p>
+        <button type="button" id="whatsapp-book" class="btn">Book Now via WhatsApp</button>
+      </form>
+    </div>
     <h2 id="booking">Book Your Service</h2>
     <div class="card">
       <form>
@@ -170,10 +243,77 @@
       </form>
     </div>
   </div>
+  <!-- PART 1 END -->
+    <div id="booking-popup" class="popup">
+    <div class="popup-content">
+      <button class="close-btn">&times;</button>
+      <h3>Enter Your Details</h3>
+      <form id="customer-form">
+        <label>Name: <input type="text" name="name" required></label>
+        <label>Phone: <input type="text" name="phone" required></label>
+        <label>Car Model: <input type="text" name="car" required></label>
+        <button type="submit" class="btn">Send via WhatsApp</button>
+      </form>
+    </div>
+  </div>
   <footer>
     <p>Contact us for more details</p>
     <p>© 2024 A&H Auto Detailer</p>
   </footer>
-</body>
-          </html>
-          
+  <script>
+    // Live total calculation
+    const addons = document.querySelectorAll('input[name="addon"]');
+    const totalEl = document.getElementById('total-price');
+    const basePrice = 1199;
+
+    function updateTotal() {
+      let total = basePrice;
+      addons.forEach(addon => {
+        if (addon.checked) total += parseInt(addon.value);
+      });
+      totalEl.textContent = '₹' + total.toLocaleString('en-IN');
+    }
+    addons.forEach(addon => addon.addEventListener('change', updateTotal));
+
+    // Popup logic
+    const whatsappBtn = document.getElementById('whatsapp-book');
+    const popup = document.getElementById('booking-popup');
+    const closeBtn = document.querySelector('.close-btn');
+
+    whatsappBtn.addEventListener('click', function() {
+      popup.style.display = 'flex';
+    });
+
+    closeBtn.addEventListener('click', function() {
+      popup.style.display = 'none';
+    });
+
+    // Form submit
+    document.getElementById('customer-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const selected = [];
+      addons.forEach(addon => {
+        if (addon.checked) {
+          const label = addon.parentElement.textContent.trim().split('–')[0].trim();
+          selected.push(label + ' (' + addon.value + ')');
+        }
+      });
+      const name = this.elements.name.value;
+      const phone = this.elements.phone.value;
+      const car = this.elements.car.value;
+      const message = encodeURIComponent(
+        'Hi, I want to book a custom interior detailing package:\n' +
+        (selected.length ? selected.join('\n') : 'Base Package only') +
+        '\nTotal: ' + totalEl.textContent +
+        '\nName: ' + name +
+        '\nPhone: ' + phone +
+        '\nCar Model: ' + car +
+        '\nPlease confirm my booking.'
+      );
+      window.open('https://wa.me/919818198485?text=' + message, '_blank');
+      popup.style.display = 'none';
+    });
+  </script>
+<!-- PART 2 END -->
+  </body>
+</html>
