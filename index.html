@@ -35,55 +35,56 @@
     .container {
       max-width: 100%;
       margin: 0 auto;
-      padding: 1rem;
+      padding: 0.8rem;
       position: relative;
       z-index: 1;
     }
     .card {
       background: var(--glass);
       backdrop-filter: blur(10px);
-      border-radius: 16px;
-      padding: 1.5rem;
-      margin-bottom: 1rem;
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 0.8rem;
       border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
     .highlight {
       color: var(--green);
       font-weight: bold;
+      font-size: 0.9rem;
     }
     .btn {
       background: var(--green);
       color: var(--dark);
       border: none;
-      padding: 1rem 2rem;
+      padding: 0.8rem 1.5rem;
       font-weight: bold;
       border-radius: 50px;
       cursor: pointer;
-      font-size: 1.1rem;
+      font-size: 1rem;
       transition: all 0.2s ease;
       text-decoration: none;
       display: inline-block;
-      margin-top: 1rem;
-      box-shadow: 0 4px 16px rgba(46, 204, 113, 0.3);
+      margin-top: 0.8rem;
+      box-shadow: 0 3px 12px rgba(46, 204, 113, 0.3);
     }
     .addon-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 0.8rem;
-      margin: 1rem 0;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+      gap: 0.6rem;
+      margin: 0.8rem 0;
     }
     .addon-tile {
       background: var(--glass);
       backdrop-filter: blur(10px);
-      border-radius: 12px;
-      padding: 0.8rem;
+      border-radius: 8px;
+      padding: 0.5rem;
       border: 1px solid rgba(255,255,255,0.1);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
       cursor: pointer;
       transition: all 0.2s ease;
       position: relative;
-      min-height: 60px;
+      min-height: 50px;
     }
     .addon-tile.selected {
       background: var(--selected);
@@ -94,21 +95,22 @@
       position: absolute;
       top: 0.2rem;
       right: 0.2rem;
-      font-size: 1rem;
+      font-size: 0.8rem;
       color: var(--green);
       font-weight: bold;
     }
     .addon-tile h3 {
-      font-size: 1rem;
+      font-size: 0.8rem;
       margin: 0;
     }
     .addon-tile p {
       color: var(--light);
-      font-size: 0.9rem;
+      font-size: 0.7rem;
       margin: 0.2rem 0 0;
     }
     .summary-item {
-      margin: 0.5rem 0;
+      margin: 0.3rem 0;
+      font-size: 0.9rem;
     }
     .popup {
       display: none;
@@ -124,36 +126,40 @@
     }
     .popup-content {
       background: var(--dark);
-      padding: 2rem;
-      border-radius: 16px;
+      padding: 1.5rem;
+      border-radius: 12px;
       width: 90%;
-      max-width: 400px;
+      max-width: 350px;
       position: relative;
     }
     .close-btn {
       position: absolute;
-      top: 1rem;
-      right: 1rem;
+      top: 0.8rem;
+      right: 0.8rem;
       background: none;
       border: none;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       color: var(--light);
       cursor: pointer;
     }
     .popup label {
       display: block;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
+      font-size: 0.9rem;
     }
     .popup input {
       width: 100%;
-      padding: 0.75rem;
-      margin-top: 0.3rem;
+      padding: 0.6rem;
+      margin-top: 0.2rem;
       background: rgba(255,255,255,0.1);
       border: none;
-      border-radius: 8px;
+      border-radius: 6px;
       color: white;
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
+    h1 { font-size: 1.8rem; margin: 0 0 0.5rem; }
+    h2 { font-size: 1.4rem; margin: 0.8rem 0 0.5rem; }
+    p { font-size: 0.9rem; margin: 0.4rem 0; }
   </style>
 </head>
 <body>
@@ -221,15 +227,13 @@
           <p class="highlight">₹149</p>
         </div>
       </div>
-      <div style="margin-top: 1rem;">
-        <p><span class="highlight">Note:</span> For luxury cars with leather interiors, we recommend Leather Cleaning & Conditioning. We use dedicated leather-care products for safe and effective results.</p>
-      </div>
+      <p style="font-size:0.8rem;margin-top:0.6rem;"><span class="highlight">Note:</span> For luxury cars with leather interiors, we recommend Leather Cleaning & Conditioning. We use dedicated leather-care products for safe and effective results.</p>
     </div>
 
     <div class="card" id="summary-card">
       <h2>Your Custom Package</h2>
       <div class="summary-item">
-        <p>Base Package: <span class="highlight">₹1,199</span></p>
+        <p>Base: <span class="highlight">₹1,199</span></p>
       </div>
       <div class="summary-item">
         <p>Add-ons: <span id="addon-list">None selected</span></p>
@@ -282,10 +286,10 @@
     function updateSummary() {
       let total = basePrice;
       let addonText = selectedAddons.length
-        ? selectedAddons.map(addon => `${addon.name} (₹${addon.price})`).join('<br>')
+        ? selectedAddons.map(addon => `${addon.name} (₹${addon.price})`).join(', ')
         : 'None selected';
       selectedAddons.forEach(addon => { total += addon.price; });
-      addonList.innerHTML = addonText;
+      addonList.textContent = addonText;
       summaryTotal.textContent = `₹${total.toLocaleString('en-IN')}`;
     }
 
@@ -307,7 +311,7 @@
         'Name: ' + name + '\n' +
         'Phone: ' + phone + '\n' +
         'Car Model: ' + car + '\n' +
-        'Add-ons:\n' + (selectedAddons.length ? selectedAddons.map(addon => `${addon.name} (₹${addon.price})`).join('\n') : 'None selected') + '\n' +
+        'Add-ons: ' + (selectedAddons.length ? selectedAddons.map(addon => `${addon.name} (₹${addon.price})`).join(', ') : 'None selected') + '\n' +
         'Total: ' + summaryTotal.textContent + '\n' +
         'Please confirm my booking.'
       );
