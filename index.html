@@ -10,6 +10,7 @@
       --green: #2ecc71;
       --light: #f8f9fa;
       --glass: rgba(255,255,255,0.12);
+      --selected: rgba(46, 204, 113, 0.2);
     }
     body, html {
       margin: 0;
@@ -46,34 +47,6 @@
       margin-bottom: 1rem;
       border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-      display: none;
-    }
-    .card.active {
-      display: block;
-    }
-    .tabs {
-      display: flex;
-      justify-content: space-around;
-      background: rgba(0,0,0,0.6);
-      border-radius: 16px;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    }
-    .tab {
-      background: transparent;
-      border: none;
-      color: var(--light);
-      font-weight: bold;
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 8px;
-      transition: all 0.2s ease;
-    }
-    .tab.active {
-      background: var(--green);
-      color: var(--dark);
     }
     .highlight {
       color: var(--green);
@@ -94,121 +67,172 @@
       margin-top: 1rem;
       box-shadow: 0 4px 16px rgba(46, 204, 113, 0.3);
     }
-    label.addon-label {
+    .btn:hover {
+      background: #27ae60;
+      transform: translateY(-2px);
+    }
+    .addon-grid {
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
       gap: 1rem;
+      margin: 1rem 0;
+    }
+    .addon-tile {
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 1rem;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      flex: 1 0 120px;
+      max-width: 140px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .addon-tile.selected {
+      background: var(--selected);
+      border-color: var(--green);
+    }
+    .addon-tile h3 {
+      font-size: 1rem;
+      margin: 0;
+    }
+    .addon-tile p {
+      color: var(--light);
+      font-size: 0.9rem;
+      margin: 0.5rem 0 0;
+    }
+    .summary-item {
+      margin: 0.5rem 0;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .popup-content {
+      background: var(--dark);
+      padding: 2rem;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--light);
       cursor: pointer;
     }
-    .faq-item {
+    .popup label {
+      display: block;
       margin-bottom: 1rem;
     }
-    .faq-question {
-      font-weight: bold;
-      color: var(--green);
+    .popup input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.3rem;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
     }
   </style>
 </head>
 <body>
   <div class="bg-image"></div>
   <div class="container">
-    <div class="tabs">
-      <button class="tab active" data-tab="home">Home</button>
-      <button class="tab" data-tab="services">Services</button>
-      <button class="tab" data-tab="about">About</button>
-      <button class="tab" data-tab="faq">FAQ</button>
-    </div>
-
-    <div class="card active" id="home">
+    <div class="card">
       <h1>A&H Auto Detailer</h1>
       <p class="highlight">Professional Interior Detailing at Your Doorstep</p>
       <p>Starting at <span class="highlight">₹1,199</span></p>
     </div>
 
-    <div class="card" id="services">
+    <div class="card">
       <h2>Base Package</h2>
       <p>Deep cleaning of seats, mats & carpets</p>
       <p>Dashboard, door panels & AC vents cleaning</p>
       <p>Full vacuuming of the interior</p>
       <p><span class="highlight">Takes around 2 to 2.5 hours</span></p>
+    </div>
 
-      <h2 style="margin-top: 1.5rem;">Optional Add-ons</h2>
-      <label class="addon-label">
-        <input type="checkbox" name="addon" value="199" class="addon-select">
-        <span>Headliner Cleaning (<span class="highlight">₹199</span>)</span>
-      </label>
-      <label class="addon-label">
-        <input type="checkbox" name="addon" value="249" class="addon-select">
-        <span>Stain & Odor Treatment (<span class="highlight">₹249</span>)</span>
-      </label>
-      <label class="addon-label">
-        <input type="checkbox" name="addon" value="499" class="addon-select">
-        <span>Exterior Foam Wash (<span class="highlight">₹499</span>)</span>
-      </label>
-      <label class="addon-label">
-        <input type="checkbox" name="addon" value="199" class="addon-select">
-        <span>Water-Based Interior Dressing (<span class="highlight">₹199</span>)</span>
-      </label>
-      <label class="addon-label">
-        <input type="checkbox" name="addon" value="99" class="addon-select">
-        <span>Silicone-Based Interior Dressing (<span class="highlight">₹99</span>)</span>
-      </label>
-      <label class="addon-label">
-        <input type="checkbox" name="addon" value="399" class="addon-select">
-        <span>Leather Cleaning & Conditioning (<span class="highlight">₹399</span>)</span>
-      </label>
-      <label class="addon-label">
-        <input type="checkbox" name="addon" value="299" class="addon-select">
-        <span>Foaming Upholstery Cleaning (<span class="highlight">₹299</span>)</span>
-      </label>
-      <label class="addon-label">
-        <input type="checkbox" name="addon" value="149" class="addon-select">
-        <span>Foaming Interior Trims & Surface Cleaning (<span class="highlight">₹149</span>)</span>
-      </label>
-      <label class="addon-label">
-        <input type="checkbox" name="addon" value="149" class="addon-select">
-        <span>Seatbelt Cleaning (<span class="highlight">₹149</span>)</span>
-      </label>
-      <label class="addon-label">
-        <input type="checkbox" name="addon" value="99" class="addon-select">
-        <span>Pedal & Footwell Cleaning (<span class="highlight">₹99</span>)</span>
-      </label>
-      <label class="addon-label">
-        <input type="checkbox" name="addon" value="149" class="addon-select">
-        <span>Glass Polishing (Interior) (<span class="highlight">₹149</span>)</span>
-      </label>
-
-      <div style="margin-top: 2rem;">
-        <h3>Your Custom Package</h3>
-        <p>Base Package: <span class="highlight">₹1,199</span></p>
-        <p>Add-ons: <span id="addon-list">None selected</span></p>
-        <p><strong>Total: <span id="summary-total">₹1,199</span></strong></p>
-        <button class="btn" id="book-via-whatsapp">Book via WhatsApp</button>
+    <div class="card">
+      <h2>Optional Add-ons</h2>
+      <div class="addon-grid">
+        <div class="addon-tile" data-name="Headliner Cleaning" data-price="199">
+          <h3>Headliner</h3>
+          <p class="highlight">₹199</p>
+        </div>
+        <div class="addon-tile" data-name="Stain & Odor Treatment" data-price="249">
+          <h3>Stain & Odor</h3>
+          <p class="highlight">₹249</p>
+        </div>
+        <div class="addon-tile" data-name="Exterior Foam Wash" data-price="499">
+          <h3>Foam Wash</h3>
+          <p class="highlight">₹499</p>
+        </div>
+        <div class="addon-tile" data-name="Water-Based Interior Dressing" data-price="199">
+          <h3>Water Dressing</h3>
+          <p class="highlight">₹199</p>
+        </div>
+        <div class="addon-tile" data-name="Silicone-Based Interior Dressing" data-price="99">
+          <h3>Silicone Dressing</h3>
+          <p class="highlight">₹99</p>
+        </div>
+        <div class="addon-tile" data-name="Leather Cleaning & Conditioning" data-price="399">
+          <h3>Leather Care</h3>
+          <p class="highlight">₹399</p>
+        </div>
+        <div class="addon-tile" data-name="Foaming Upholstery Cleaning" data-price="299">
+          <h3>Upholstery</h3>
+          <p class="highlight">₹299</p>
+        </div>
+        <div class="addon-tile" data-name="Foaming Interior Trims & Surface Cleaning" data-price="149">
+          <h3>Trims & Surfaces</h3>
+          <p class="highlight">₹149</p>
+        </div>
+        <div class="addon-tile" data-name="Seatbelt Cleaning" data-price="149">
+          <h3>Seatbelt</h3>
+          <p class="highlight">₹149</p>
+        </div>
+        <div class="addon-tile" data-name="Pedal & Footwell Cleaning" data-price="99">
+          <h3>Footwell</h3>
+          <p class="highlight">₹99</p>
+        </div>
+        <div class="addon-tile" data-name="Glass Polishing (Interior)" data-price="149">
+          <h3>Glass Polish</h3>
+          <p class="highlight">₹149</p>
+        </div>
       </div>
-      <div class="note" style="margin-top: 1.5rem;">
+      <div class="note" style="margin-top: 1rem;">
         <p><span class="highlight">Note:</span> For luxury cars with leather interiors, we recommend Leather Cleaning & Conditioning. We use dedicated leather-care products for safe and effective results.</p>
       </div>
     </div>
 
-    <div class="card" id="about">
-      <h2>About Us</h2>
-      <p>At A&H Auto Detailer, we bring professional car detailing to your doorstep. Our team uses premium products and expert techniques to ensure your car looks and feels brand new.</p>
-    </div>
-
-    <div class="card" id="faq">
-      <h2>FAQ</h2>
-      <div class="faq-item">
-        <p class="faq-question">How long does the service take?</p>
-        <p>Most services take between 2 to 2.5 hours, depending on your selected add-ons.</p>
+    <div class="card" id="summary-card">
+      <h2>Your Custom Package</h2>
+      <div class="summary-item">
+        <p>Base Package: <span class="highlight">₹1,199</span></p>
       </div>
-      <div class="faq-item">
-        <p class="faq-question">What areas do you serve?</p>
-        <p>We currently serve all major areas in the city. Please contact us for specific locations.</p>
+      <div class="summary-item">
+        <p>Add-ons: <span id="addon-list">None selected</span></p>
       </div>
-      <div class="faq-item">
-        <p class="faq-question">Can I cancel or reschedule my booking?</p>
-        <p>Yes, you can reschedule or cancel your booking up to 24 hours before your appointment.</p>
+      <div class="summary-item">
+        <p><strong>Total: <span id="summary-total">₹1,199</span></strong></p>
       </div>
+      <button class="btn" id="book-via-whatsapp">Book via WhatsApp</button>
     </div>
   </div>
 
@@ -226,21 +250,7 @@
   </div>
 
   <script>
-    // Tab switching
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', function() {
-        tabs.forEach(t => t.classList.remove('active'));
-        this.classList.add('active');
-        document.querySelectorAll('.card').forEach(card => {
-          card.classList.remove('active');
-        });
-        document.getElementById(this.dataset.tab).classList.add('active');
-      });
-    });
-
-    // Addon selection and summary
-    const addons = document.querySelectorAll('.addon-select');
+    const addonTiles = document.querySelectorAll('.addon-tile');
     const addonList = document.getElementById('addon-list');
     const summaryTotal = document.getElementById('summary-total');
     const bookBtn = document.getElementById('book-via-whatsapp');
@@ -248,22 +258,31 @@
     const closeBtn = document.querySelector('.close-btn');
     const basePrice = 1199;
 
+    let selectedAddons = [];
+
+    addonTiles.forEach(tile => {
+      tile.addEventListener('click', function() {
+        this.classList.toggle('selected');
+        const name = this.dataset.name;
+        const price = parseInt(this.dataset.price);
+        if (this.classList.contains('selected')) {
+          selectedAddons.push({ name, price });
+        } else {
+          selectedAddons = selectedAddons.filter(addon => addon.name !== name);
+        }
+        updateSummary();
+      });
+    });
+
     function updateSummary() {
       let total = basePrice;
-      let selected = [];
-      addons.forEach(addon => {
-        if (addon.checked) {
-          const name = addon.parentElement.querySelector('span').textContent.split('(')[0].trim();
-          const price = parseInt(addon.value);
-          selected.push(`${name} (₹${price})`);
-          total += price;
-        }
-      });
-      addonList.innerHTML = selected.length ? selected.join('<br>') : 'None selected';
+      let addonText = selectedAddons.length
+        ? selectedAddons.map(addon => `${addon.name} (₹${addon.price})`).join('<br>')
+        : 'None selected';
+      selectedAddons.forEach(addon => { total += addon.price; });
+      addonList.innerHTML = addonText;
       summaryTotal.textContent = `₹${total.toLocaleString('en-IN')}`;
     }
-
-    addons.forEach(addon => addon.addEventListener('change', updateSummary));
 
     bookBtn.addEventListener('click', function() {
       popup.style.display = 'flex';
@@ -278,20 +297,12 @@
       const name = this.elements.name.value;
       const phone = this.elements.phone.value;
       const car = this.elements.car.value;
-      let selected = [];
-      addons.forEach(addon => {
-        if (addon.checked) {
-          const name = addon.parentElement.querySelector('span').textContent.split('(')[0].trim();
-          const price = addon.value;
-          selected.push(`${name} (₹${price})`);
-        }
-      });
       const message = encodeURIComponent(
         'Hi, I want to book a custom interior detailing package:\n' +
         'Name: ' + name + '\n' +
         'Phone: ' + phone + '\n' +
         'Car Model: ' + car + '\n' +
-        'Add-ons:\n' + (selected.length ? selected.join('\n') : 'None selected') + '\n' +
+        'Add-ons:\n' + (selectedAddons.length ? selectedAddons.map(addon => `${addon.name} (₹${addon.price})`).join('\n') : 'None selected') + '\n' +
         'Total: ' + summaryTotal.textContent + '\n' +
         'Please confirm my booking.'
       );
